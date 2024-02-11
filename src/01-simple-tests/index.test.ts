@@ -1,4 +1,4 @@
-import { simpleCalculator, Action } from './index';
+import { simpleCalculator, Action, RawCalculatorInput } from './index';
 
 type dataUnit = {
   number1: number;
@@ -18,7 +18,7 @@ const dataSet: dataUnit[] = [
     diff: -1,
     mult: 2,
     part: 0.5,
-    exp: 1
+    exp: 1,
   },
   {
     number1: -1,
@@ -27,7 +27,7 @@ const dataSet: dataUnit[] = [
     diff: 1,
     mult: 2,
     part: 0.5,
-    exp: 1
+    exp: 1,
   },
   {
     number1: 1,
@@ -36,7 +36,7 @@ const dataSet: dataUnit[] = [
     diff: 1,
     mult: 0,
     part: Infinity,
-    exp: 1
+    exp: 1,
   },
   {
     number1: 555555,
@@ -45,7 +45,7 @@ const dataSet: dataUnit[] = [
     diff: 111111,
     mult: 246913086420,
     part: 1.25,
-    exp: Infinity
+    exp: Infinity,
   },
   {
     number1: -11,
@@ -54,20 +54,17 @@ const dataSet: dataUnit[] = [
     diff: -22,
     mult: -121,
     part: -1,
-    exp: -285311670611
+    exp: -285311670611,
   },
 ];
 
-
-
 describe('simpleCalculator tests', () => {
-
   test('should add two numbers', () => {
     for (const data of dataSet) {
       const sum = simpleCalculator({
         a: data.number1,
         b: data.number2,
-        action: Action.Add
+        action: Action.Add,
       });
       expect(sum).toBe(data.sum);
     }
@@ -78,7 +75,7 @@ describe('simpleCalculator tests', () => {
       const diff = simpleCalculator({
         a: data.number1,
         b: data.number2,
-        action: Action.Subtract
+        action: Action.Subtract,
       });
       expect(diff).toBe(data.diff);
     }
@@ -89,7 +86,7 @@ describe('simpleCalculator tests', () => {
       const mult = simpleCalculator({
         a: data.number1,
         b: data.number2,
-        action: Action.Multiply
+        action: Action.Multiply,
       });
       expect(mult).toBe(data.mult);
     }
@@ -100,7 +97,7 @@ describe('simpleCalculator tests', () => {
       const part = simpleCalculator({
         a: data.number1,
         b: data.number2,
-        action: Action.Divide
+        action: Action.Divide,
       });
       expect(part).toBe(data.part);
     }
@@ -111,7 +108,7 @@ describe('simpleCalculator tests', () => {
       const exp = simpleCalculator({
         a: data.number1,
         b: data.number2,
-        action: Action.Exponentiate
+        action: Action.Exponentiate,
       });
       expect(exp).toBe(data.exp);
     }
@@ -121,27 +118,28 @@ describe('simpleCalculator tests', () => {
     const invalidResult = simpleCalculator({
       a: 1,
       b: 2,
-      action: 'Invalid'
+      action: 'Invalid',
     });
     expect(invalidResult).toBeNull();
   });
 
   test('should return null for invalid arguments', () => {
-    const invalidArguments: any[] = [{
-      a: 1,
-      b: 'str',
-      action: Action.Add
-    },
-    {
-      a: 'str',
-      b: 33,
-      action: Action.Multiply
-    },
-    {
-      a: false,
-      b: true,
-      action: Action.Add
-    }
+    const invalidArguments: RawCalculatorInput[] = [
+      {
+        a: 1,
+        b: 'str',
+        action: Action.Add,
+      },
+      {
+        a: 'str',
+        b: 33,
+        action: Action.Multiply,
+      },
+      {
+        a: false,
+        b: true,
+        action: Action.Add,
+      },
     ];
 
     for (const argument of invalidArguments) {
@@ -149,5 +147,4 @@ describe('simpleCalculator tests', () => {
       expect(invalidResult).toBeNull();
     }
   });
-
 });

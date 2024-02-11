@@ -29,15 +29,15 @@ const testCases = [
   { a: 1, b: 2, action: 'Invalid', expected: null },
   { a: 1, b: 'str', action: Action.Add, expected: null },
   { a: 'str', b: 33, action: Action.Multiply, expected: null },
-  { a: false, b: true, action: Action.Add, expected: null }
+  { a: false, b: true, action: Action.Add, expected: null },
 ];
 
-
 describe('simpleCalculator', () => {
-  test.each(testCases)('($a $action $b) should return $expected', ({ a, b, action, expected }) => {
-    const result = simpleCalculator({ a, b, action });
-    expect(result).toBe(expected);
-  });
-
+  test.each(testCases)(
+    '($a $action $b) should return $expected',
+    ({ a, b, action, expected }) => {
+      const result = simpleCalculator({ a, b, action });
+      expect(result).toBe(expected);
+    },
+  );
 });
-

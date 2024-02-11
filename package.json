@@ -2,7 +2,7 @@
   "name": "basic-testing",
   "version": "1.0.0",
   "description": "Task for mastering unit-tests with Jest, Node.js and Typescript",
-  "author": "AlreadyBored",
+  "author": "zweroboy1",
   "license": "MIT",
   "engines": {
     "node": ">=20.0.0"
@@ -11,7 +11,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "jest --silent",
-    "test:verbose": "jest",
+    "test:verbose": "jest --verbose",
     "build": "tsc"
   },
   "devDependencies": {
