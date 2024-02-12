@@ -2,7 +2,7 @@
   "name": "basic-testing",
   "version": "1.0.0",
   "description": "Task for mastering unit-tests with Jest, Node.js and Typescript",
-  "author": "AlreadyBored",
+  "author": "zweroboy1",
   "license": "MIT",
   "engines": {
     "node": ">=20.0.0"
